@@ -1,0 +1,5 @@
+pyyaml
+numpy
+scipy
+pytest
+# anthropic   # uncomment for the live escape experiment (experiment/run.py --live)
