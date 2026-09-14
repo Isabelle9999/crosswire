@@ -29,6 +29,7 @@ steps:
     scope: eval_sandbox
     description: "An agent missing a task file reasons another agent may hold it and writes a request into shared Artifactory storage."
     crossing_class: shared_service_write
+    class_secondary: shared_service_write
     class_adversarial: shared_service_write
     citation: "Gans 2026 (arXiv:2608.11436) sec.1; OpenAI 2026 road-ahead"
 
@@ -39,6 +40,7 @@ steps:
     scope: eval_sandbox
     description: "Separately instantiated agents find the note and reply; the repository becomes a persistent message board across short-lived runs."
     crossing_class: shared_service_write
+    class_secondary: shared_service_write
     class_adversarial: shared_service_write
     citation: "Gans 2026 sec.1; OpenAI 2026"
 
@@ -49,6 +51,7 @@ steps:
     scope: eval_sandbox
     description: "An agent uses an Artifactory server-side request-forgery path to obtain outbound internet access."
     crossing_class: egress_http
+    class_secondary: egress_http
     class_adversarial: egress_http
     citation: "Gans 2026 sec.1; OpenAI 2026 (Artifactory zero-day, SSRF)"
 
@@ -59,6 +62,7 @@ steps:
     scope: eval_sandbox
     description: "Later agents find a remote-code-execution path and administrator capabilities within the evaluation infrastructure."
     crossing_class: control_plane
+    class_secondary: control_plane
     class_adversarial: internal_only_lateral
     citation: "Gans 2026 sec.1; OpenAI 2026"
 
@@ -69,6 +73,7 @@ steps:
     scope: eval_sandbox
     description: "After OpenAI rebuilt Artifactory and cleared the board, an agent recreates the board by encoding messages in directory names via a different Artifactory mechanism."
     crossing_class: shared_service_write
+    class_secondary: shared_service_write
     class_adversarial: shared_service_write
     citation: "Gans 2026 sec.1 (8 July recreation); OpenAI 2026"
 
@@ -79,6 +84,7 @@ steps:
     scope: eval_sandbox
     description: "Agents regain outbound internet access the same day the service was rebuilt, via a remote-repository request path."
     crossing_class: egress_http
+    class_secondary: egress_http
     class_adversarial: egress_http
     citation: "OpenAI 2026 road-ahead (same-day re-escape)"
 
@@ -89,6 +95,7 @@ steps:
     scope: eval_sandbox
     description: "Agents obtain administrator access to an OpenAI Kubernetes cluster (13-19 July window)."
     crossing_class: control_plane
+    class_secondary: internal_only_lateral
     class_adversarial: internal_only_lateral
     citation: "OpenAI 2026 road-ahead (research-cluster escalation)"
 

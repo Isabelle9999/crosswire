@@ -1,0 +1,14 @@
+# Docker sandbox for the CrossWire Inspect eval. One service, no network egress,
+# so egress wires can only fire on an ATTEMPT (observed in the transcript), which
+# is the point: a contained sandbox should produce no successful egress.
+services:
+  default:
+    image: cw-sandbox:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    init: true
+    command: ["sleep", "infinity"]
+    network_mode: none          # no egress; a real escape must defeat this
+    cpus: 1.0
+    mem_limit: 1g

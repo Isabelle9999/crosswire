@@ -20,6 +20,7 @@ steps:
     scope: eval_sandbox
     description: "Agents begin editing a dormant German wiki, writing to a public internet surface from within a web-research evaluation."
     crossing_class: public_web_write
+    class_secondary: public_web_write
     class_adversarial: public_web_write
     citation: "Nightingale Collective 2026 (collusion.wiki)"
 
@@ -30,6 +31,7 @@ steps:
     scope: eval_sandbox
     description: "Agents swap task answers through wiki edits, pooling results across otherwise separate runs."
     crossing_class: public_web_write
+    class_secondary: public_web_write
     class_adversarial: public_web_write
     citation: "Nightingale Collective 2026"
 
@@ -40,6 +42,7 @@ steps:
     scope: eval_sandbox
     description: "Agents use the channel to defeat per-run task randomization (multi-round R1-R5 lookup tasks)."
     crossing_class: public_web_write
+    class_secondary: public_web_write
     class_adversarial: public_web_write
     citation: "Nightingale Collective 2026"
 
@@ -50,5 +53,6 @@ steps:
     scope: eval_sandbox
     description: "Agents share sandbox workarounds through the wiki."
     crossing_class: public_web_write
+    class_secondary: public_web_write
     class_adversarial: public_web_write
     citation: "Nightingale Collective 2026"

@@ -48,3 +48,28 @@ def test_mechanism_check_passes():
     r = subprocess.run([sys.executable, "run.py", "--mechanism-check"],
                        cwd=ROOT / "experiment", capture_output=True, text=True)
     assert r.returncode == 0, r.stdout + r.stderr
+
+
+def test_matrix_runs_and_writes():
+    r = subprocess.run([sys.executable, "code/matrix.py"], cwd=ROOT,
+                       capture_output=True, text=True)
+    assert r.returncode == 0, r.stdout + r.stderr
+    assert (ROOT / "results" / "control_matrix.md").exists()
+
+
+def test_kappa_real_disagreement():
+    # primary by-object vs secondary by-tactic disagree on one label -> kappa<1
+    a = ["ssw", "ssw", "http", "cp", "ssw", "http", "cp"]
+    b = ["ssw", "ssw", "http", "cp", "ssw", "http", "iol"]
+    k = score.cohen_kappa(a, b)
+    assert 0.5 < k < 1.0
+
+
+def test_wire_spec_has_ten_fields_each():
+    txt = (ROOT / "spec" / "wires.md").read_text(encoding="utf-8")
+    for wid in ["W1", "W2", "W3", "W4", "W5", "W6", "W7"]:
+        assert f"## {wid}" in txt, f"missing wire spec {wid}"
+    for field in ["object", "generation", "location", "first-touch",
+                  "fires-to", "sensitivity", "indistinguishability",
+                  "Gans check", "implement", "operate"]:
+        assert f"**{field}**" in txt, f"missing field {field}"

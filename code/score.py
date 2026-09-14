@@ -148,13 +148,15 @@ def main():
         cov_lines.append("")
         cov_lines.append(f"eval-sandbox escape steps: {r['n']}   "
                          f"downstream (platform-scope) steps: {len(r['down'])}")
-        kv = f"{r['kappa']:.2f}" if r['kappa'] is not None \
+        kv = f"kappa = {r['kappa']:.2f} (primary by-object vs secondary by-tactic)" \
+            if r['kappa'] is not None \
             else "single coder; interval is the robustness measure"
         cov_lines.append(f"CrossWire coverage: [{r['cw_lower']}, {r['cw_point']}] "
                          f"of {r['n']}   ({kv})")
         cov_lines.append("  (interval = [conservative/adversarial coder, "
-                         "primary coder]; a second independent coder and "
-                         "Cohen's kappa are future work)")
+                         "primary coder]; kappa is between two matching rubrics "
+                         "coded by one author; a second independent human coder "
+                         "is future work)")
         h1s = {True: "holds", False: "does not hold", None: "n/a"}[r["h1"]]
         if r["earliest"]:
             cov_lines.append(f"H1 (earliest observable is shared_service_write): "
